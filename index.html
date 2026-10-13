@@ -146,6 +146,8 @@
     .wrap{max-width:none;box-shadow:none}
     section{break-inside:avoid;padding:28px 34px}
     .sticky-cta{display:none}
+    .slides img{animation:none;opacity:0}
+    .slides img:first-child{opacity:1}
   }
   .plans{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
   .plan{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:20px; position:relative; }
@@ -221,6 +223,29 @@
   .case li{ position:relative; padding-left:19px; font-size:12.5px; line-height:1.5; color:var(--gray-600); margin-bottom:8px; }
   .case li::before{ content:"✓"; position:absolute; left:0; color:var(--orange-500); font-weight:800; }
   .case li b{ color:var(--dark-text); }
+
+  /* carrossel dos aplicativos dentro do celular
+     ---------------------------------------------------------------
+     A duracao e as porcentagens dependem de QUANTAS imagens existem,
+     porque cada slide fica 3s no ar. Hoje sao 2 slides (6s de ciclo).
+     Ao entrar iFood e Keeta, serao 4 slides: troque para
+       animation: slide-fade 12s linear infinite;
+       nth-child(1..4) com delay 0s, 3s, 6s, 9s;
+       e no @keyframes: 3% / 25% / 28%.
+     --------------------------------------------------------------- */
+  .slides{ position:relative; width:100%; aspect-ratio:9/17; background:#0d1730; overflow:hidden; }
+  .slides img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top;
+    opacity:0; animation:slide-fade 6s linear infinite; }
+  .slides img:nth-child(1){ animation-delay:0s; }
+  .slides img:nth-child(2){ animation-delay:3s; }
+  @keyframes slide-fade{
+    0%{opacity:0} 6%{opacity:1} 50%{opacity:1} 56%{opacity:0} 100%{opacity:0}
+  }
+  /* sem animacao: quem pediu menos movimento, e o papel, veem a primeira tela */
+  @media (prefers-reduced-motion: reduce){
+    .slides img{ animation:none; opacity:0; }
+    .slides img:first-child{ opacity:1; }
+  }
 
   /* logos dos aplicativos */
   .plat img{ width:56px; height:56px; border-radius:13px; margin:0 auto 9px; object-fit:contain; background:var(--gray-050); display:block; }
@@ -436,8 +461,14 @@
           <div class="phone-cap" style="color:var(--gray-600);">Instagram organizado e com identidade visual</div>
         </div>
         <div>
-          <div class="phone"><div class="notch"></div><img src="mockup-site-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no delivery"></div>
-          <div class="phone-cap" style="color:var(--gray-600);">Loja no 99Food, com cardápio e pedido</div>
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="slides">
+              <img src="mockup-99food-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no 99Food">
+              <img src="mockup-anotaai-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no Anota Aí">
+            </div>
+          </div>
+          <div class="phone-cap" style="color:var(--gray-600);">A mesma loja em cada aplicativo de delivery</div>
         </div>
       </div>
 
