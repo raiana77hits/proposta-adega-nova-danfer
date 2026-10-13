@@ -227,19 +227,20 @@
   /* carrossel dos aplicativos dentro do celular
      ---------------------------------------------------------------
      A duracao e as porcentagens dependem de QUANTAS imagens existem,
-     porque cada slide fica 3s no ar. Hoje sao 2 slides (6s de ciclo).
-     Ao entrar iFood e Keeta, serao 4 slides: troque para
+     porque cada slide fica 3s no ar. Hoje sao 3 slides (9s de ciclo).
+     Ao entrar a Keeta, serao 4 slides: troque para
        animation: slide-fade 12s linear infinite;
        nth-child(1..4) com delay 0s, 3s, 6s, 9s;
        e no @keyframes: 3% / 25% / 28%.
      --------------------------------------------------------------- */
   .slides{ position:relative; width:100%; aspect-ratio:9/17; background:#0d1730; overflow:hidden; }
   .slides img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top;
-    opacity:0; animation:slide-fade 6s linear infinite; }
+    opacity:0; animation:slide-fade 9s linear infinite; }
   .slides img:nth-child(1){ animation-delay:0s; }
   .slides img:nth-child(2){ animation-delay:3s; }
+  .slides img:nth-child(3){ animation-delay:6s; }
   @keyframes slide-fade{
-    0%{opacity:0} 6%{opacity:1} 50%{opacity:1} 56%{opacity:0} 100%{opacity:0}
+    0%{opacity:0} 4%{opacity:1} 33%{opacity:1} 37%{opacity:0} 100%{opacity:0}
   }
   /* sem animacao: quem pediu menos movimento, e o papel, veem a primeira tela */
   @media (prefers-reduced-motion: reduce){
@@ -298,18 +299,17 @@
   PROPOSTA ADEGA NOVA DANFER · Humanize
   Base: modelo-proposta/ · Regras: PADRAO-PROPOSTAS.md
 
-  DADOS REAIS JA APLICADOS (print do perfil, 13/10/2026):
-    @adeganovadanfer · 393 seguidores · 6 publicacoes · 277 seguindo
-    Rua Careiro, 30 - Jd Danfer · WhatsApp da adega (11) 94934-7990
-    Aberto todos os dias · seg a qui 11h-23h · sex 11h-1h
+  Cliente: Adega Nova Danfer · responsavel Joao Gabriel
+  Rua Careiro, 30 - Jd. Danfer, Sao Paulo - SP
+  @adeganovadanfer · WhatsApp de pedido (11) 94934-7990 (o da bio do
+  Instagram; a placa da fachada mostra outro numero, confirmado com a Ray
+  em 13/10/2026 que o de pedido e este)
+  Horario: seg a qui 11h-23h · sex 11h-1h · sab 11h-2h · dom 10h-22h
 
   AINDA PENDENTE:
-    1. foto-adega-nova-danfer.jpg        -> placeholder marcado
-    2. mockup-instagram-adega-nova-danfer.jpg -> placeholder marcado
-    3. mockup-site-adega-nova-danfer.jpg      -> placeholder marcado
-    4. Link da simulacao do site
-    5. Secao "Onde da para chegar": numeros reais da adega do Bruninho
-    6. Horario de sabado e domingo (a bio do Instagram corta em "...mais")
+    - mockup-keeta-adega-nova-danfer.jpg: a quarta tela do carrossel.
+      Ao acrescentar, ver o comentario do bloco .slides no CSS: sao tres
+      numeros a trocar para o ciclo virar 12s.
 -->
 
 <div class="wrap">
@@ -464,6 +464,7 @@
           <div class="phone">
             <div class="notch"></div>
             <div class="slides">
+              <img src="mockup-ifood-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no iFood">
               <img src="mockup-99food-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no 99Food">
               <img src="mockup-anotaai-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no Anota Aí">
             </div>
