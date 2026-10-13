@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Proposta Comercial · Adega Nova Danfer · Humanize</title>
+<style>
+  :root{
+    --navy-900:#050b1e;
+    --navy-800:#081226;
+    --navy-700:#0c1a36;
+    --blue-500:#1ea7ff;
+    --blue-400:#4fc3ff;
+    --blue-glow:#00c3ff;
+    --orange-500:#ff7a30;
+    --orange-400:#ffa15c;
+    --white:#ffffff;
+    --gray-050:#f7f9fc;
+    --gray-100:#eef1f7;
+    --gray-300:#cfd6e4;
+    --gray-600:#5b6478;
+    --dark-text:#0b1633;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{background:var(--navy-900);}
+  body{
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif; color:var(--dark-text);
+    background:var(--navy-900);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  .wrap{ max-width:520px; margin:0 auto; background:var(--white); min-height:100vh; position:relative; overflow:hidden;
+    box-shadow:0 0 60px rgba(0,0,0,.5); }
+
+  section{ position:relative; padding:38px 22px; overflow:hidden; }
+  .dark{ background:linear-gradient(160deg,var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%); color:#fff; }
+  .light{ background:var(--gray-050); color:var(--dark-text); }
+  .white{ background:var(--white); color:var(--dark-text); }
+
+  .glow{ position:absolute; border-radius:50%; filter:blur(50px); opacity:.35; pointer-events:none; }
+  .glow-blue{ background:radial-gradient(circle, var(--blue-glow), transparent 70%); }
+  .glow-orange{ background:radial-gradient(circle, var(--orange-500), transparent 70%); }
+  .lines{ position:absolute; inset:0; opacity:.07; pointer-events:none;
+    background-image:repeating-linear-gradient(115deg, var(--blue-400) 0px, var(--blue-400) 1px, transparent 1px, transparent 60px); }
+
+  .z{ position:relative; z-index:2; }
+
+  /* header / logos */
+  .topbar{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .humanize-logo{ height:26px; width:auto; }
+  .humanize-wordmark{display:flex;flex-direction:column;line-height:.9;color:#fff}.humanize-wordmark strong{font-size:17px;letter-spacing:2.2px}.humanize-wordmark span{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-400);margin-top:5px}
+  .jk-badge{ display:flex; align-items:center; gap:8px; }
+  .jk-badge img{ height:34px; width:34px; border-radius:50%; background:#fff; object-fit:contain; }
+  .jk-badge b{ font-size:11.5px; font-weight:800; display:block; line-height:1.15;}
+  .jk-badge span{ font-size:8.5px; opacity:.65; letter-spacing:1px; text-transform:uppercase; }
+
+  .pill{ display:inline-flex; align-items:center; gap:6px; padding:6px 13px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; }
+  .pill-orange{ background:rgba(255,122,48,.15); color:var(--orange-400); }
+  .pill-blue{ background:rgba(79,195,255,.15); color:var(--blue-400); }
+
+  .eyebrow{ text-transform:uppercase; letter-spacing:3px; font-size:11px; font-weight:800; color:var(--blue-400); }
+  .light .eyebrow, .white .eyebrow{ color:var(--blue-500); }
+
+  h1{ font-size:27px; font-weight:800; line-height:1.22; margin-top:12px; }
+  h2{ font-size:21px; font-weight:800; line-height:1.25; margin-top:6px; }
+  .accent{ color:var(--blue-400); }
+  .light .accent, .white .accent{ color:var(--blue-500); }
+
+  .lead{ font-size:14.5px; line-height:1.6; color:#c4cee0; margin-top:12px; }
+  .light .lead, .white .lead{ color:var(--gray-600); }
+
+  .divider{ width:42px; height:3px; background:linear-gradient(90deg,var(--blue-400),var(--orange-400)); border-radius:3px; margin:14px 0; }
+
+  .hero-photo{ margin-top:20px; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.14); box-shadow:0 14px 34px rgba(0,0,0,.35); }
+  .hero-photo img{ width:100%; height:190px; object-fit:cover; display:block; }
+  .hero-cap{ background:rgba(255,255,255,.06); padding:9px 13px; font-size:11px; color:#a8b4d0; display:flex; align-items:center; gap:6px; }
+
+  ul.bullets{ list-style:none; margin-top:16px; }
+  ul.bullets li{ position:relative; padding-left:20px; margin-bottom:11px; font-size:13.5px; line-height:1.5; color:#dbe3f2; }
+  ul.bullets li::before{ content:""; position:absolute; left:0; top:6px; width:8px; height:8px; border-radius:2px; background:var(--blue-400); transform:rotate(45deg); }
+  ul.bullets li b{ color:#fff; }
+
+  /* service cards */
+  .cards{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+  .card{ background:var(--white); border-radius:14px; padding:16px; box-shadow:0 6px 18px rgba(11,22,51,.07); border:1px solid var(--gray-100); display:flex; gap:13px; align-items:flex-start; }
+  .card h3{ font-size:14.5px; font-weight:800; margin-bottom:3px; }
+  .card p{ font-size:12.5px; color:var(--gray-600); line-height:1.45; }
+  .icon-badge{ width:42px;height:42px;border-radius:12px; display:flex;align-items:center;justify-content:center; background:rgba(30,167,255,.12); color:var(--blue-500); flex:none; }
+  .icon-badge.orange{ background:rgba(255,122,48,.13); color:var(--orange-500); }
+  svg.icon{ width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+  .social-logos{ display:flex; gap:8px; margin-top:2px; }
+  .social-logos img{ width:22px; height:22px; border-radius:6px; object-fit:cover; }
+
+  /* photo gallery */
+  .gallery{ margin-top:18px; display:flex; flex-direction:column; gap:14px; }
+  .gitem{ border-radius:14px; overflow:hidden; background:var(--white); border:1px solid var(--gray-100); box-shadow:0 6px 18px rgba(11,22,51,.06); }
+  .gitem img{ width:100%; height:170px; object-fit:cover; }
+  .gitem .gcap{ padding:10px 13px; display:flex; align-items:center; gap:8px; }
+  .gitem .gcap b{ font-size:12.5px; font-weight:800; }
+  .gitem .gcap span{ font-size:10.5px; color:var(--gray-600); display:block; }
+
+  /* phone mockup for real site */
+  .phones{ display:flex; gap:12px; justify-content:center; margin-top:18px; }
+  .phones > div{ flex:1; max-width:220px; }
+  .phones .phone img{ aspect-ratio:9/17; object-fit:cover; object-position:top; }
+  .phones .phone{ width:100%; margin:0; border-width:5px; border-radius:22px; }
+  .phone{ width:250px; margin:18px auto 4px; border-radius:26px; background:#0d1730; border:6px solid #182549; box-shadow:0 16px 40px rgba(0,0,0,.4); overflow:hidden; position:relative; }
+  .phone .notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:70px; height:14px; background:#182549; border-radius:0 0 10px 10px; z-index:3;}
+  .phone img{ width:100%; display:block; }
+  .phone-cap{ text-align:center; font-size:11.5px; color:#a8b4d0; margin-top:10px; }
+
+  /* price */
+  .price-card{ margin-top:18px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:22px 20px; text-align:center; }
+  .price-card .val{ font-size:40px; font-weight:800; color:#fff; line-height:1; }
+  .price-card .val small{ font-size:15px; font-weight:700; color:#a8b4d0; }
+  .price-card .tag{ margin-top:8px; font-size:11px; color:var(--orange-400); font-weight:800; letter-spacing:.6px; text-transform:uppercase; }
+  .price-card .after{ margin-top:12px; font-size:12.5px; color:#c4cee0; line-height:1.5; }
+  .price-card .after b{ color:#fff; }
+
+  table.svc{ width:100%; border-collapse:collapse; margin-top:16px; }
+  table.svc td{ padding:9px 0; font-size:12.5px; border-bottom:1px solid rgba(255,255,255,.1); vertical-align:top; color:#dbe3f2; line-height:1.4; }
+  table.svc td.n{ width:26px; }
+
+  /* CTA */
+  .cta-box{ margin-top:22px; background:rgba(255,255,255,.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,.12); }
+  .cta-title{ font-size:17px; font-weight:800; margin-bottom:12px; }
+  .cta-btn{ display:flex; align-items:center; justify-content:center; gap:9px; background:#25D366; color:#fff; font-weight:800; font-size:14.5px; padding:14px; border-radius:12px; text-decoration:none; box-shadow:0 8px 20px rgba(37,211,102,.35); }
+  .cta-info{ margin-top:14px; display:flex; flex-direction:column; gap:8px; font-size:12px; color:#a8b4d0; }
+  .cta-info span{ display:flex; align-items:center; gap:7px; }
+
+  footer{ text-align:center; padding:20px; font-size:10.5px; color:#7c88a8; letter-spacing:1.5px; text-transform:uppercase; background:var(--navy-900); }
+
+  .sticky-cta{ position:sticky; bottom:0; z-index:50; background:rgba(5,11,30,.92); backdrop-filter:blur(8px); padding:12px 16px; border-top:1px solid rgba(255,255,255,.1); display:flex; }
+  .sticky-cta a{ flex:1; display:flex; align-items:center; justify-content:center; gap:8px; background:#25D366; color:#fff; font-weight:800; font-size:14px; padding:12px; border-radius:11px; text-decoration:none; }
+
+  @media (min-width:521px){
+    body{ padding:24px 0; }
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    html,body{background:#fff}
+    body{padding:0}
+    .wrap{max-width:none;box-shadow:none}
+    section{break-inside:avoid;padding:28px 34px}
+    .sticky-cta{display:none}
+  }
+  .plans{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .plan{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:20px; position:relative; }
+  .plan.best{ border:2px solid var(--orange-400); background:rgba(255,122,48,.08); }
+  .plan .badge{ position:absolute; top:-11px; right:16px; background:var(--orange-500); color:#fff; font-size:10px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; padding:4px 10px; border-radius:99px; }
+  .plan .pn{ font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--blue-400); }
+  .plan h3{ font-size:17px; font-weight:800; color:#fff; margin-top:4px; }
+  .plan .val{ font-size:32px; font-weight:800; color:#fff; margin-top:10px; line-height:1; }
+  .plan .val small{ font-size:13px; color:#a8b4d0; font-weight:700; }
+  .plan .old{ font-size:12px; color:#a8b4d0; margin-top:6px; }
+  .plan .old s{ color:#7c88a8; }
+  .plan .old b{ color:var(--orange-400); }
+  .plan ul{ list-style:none; margin-top:12px; }
+  .plan li{ font-size:12.5px; color:#dbe3f2; padding:5px 0 5px 20px; position:relative; line-height:1.4; }
+  .plan li::before{ content:"✓"; position:absolute; left:0; color:var(--blue-400); font-weight:800; }
+  .plan .note{ font-size:11.5px; color:#a8b4d0; margin-top:8px; font-style:italic; }
+  table.avulso{ width:100%; border-collapse:collapse; margin-top:12px; }
+  table.avulso td{ padding:8px 0; font-size:12.5px; color:#dbe3f2; border-bottom:1px solid rgba(255,255,255,.1); }
+  table.avulso td:last-child{ text-align:right; font-weight:800; color:#fff; }
+  .menu-mock{ background:#fff; font-size:9px; color:var(--dark-text); }
+  .menu-mock .mh{ background:#0b1a4a; color:#fff; padding:22px 10px 10px; display:flex; align-items:center; gap:7px; }
+  .menu-mock .mh img{ width:30px; height:30px; border-radius:50%; }
+  .menu-mock .mh b{ font-size:11px; display:block; color:#ffc21a; }
+  .menu-mock .tabs{ display:flex; gap:4px; padding:7px 8px; }
+  .menu-mock .tabs span{ padding:3px 7px; border-radius:99px; background:var(--gray-100); font-weight:700; }
+  .menu-mock .tabs span.on{ background:#ffc21a; }
+  .menu-mock .it{ display:flex; gap:7px; align-items:center; padding:7px 8px; border-top:1px solid var(--gray-100); }
+  .menu-mock .th{ width:32px; height:32px; border-radius:7px; background:linear-gradient(135deg,#1e3fae,#ffc21a); flex:none; }
+  .menu-mock .it b{ display:block; font-size:9.5px; }
+  .menu-mock .it i{ font-style:normal; color:var(--gray-600); }
+  .menu-mock .pr{ margin-left:auto; font-weight:800; color:#1e3fae; }
+  .menu-mock .bt{ margin:8px; background:#25D366; color:#fff; text-align:center; font-weight:800; padding:8px; border-radius:8px; }
+
+  /* --- componentes extras desta proposta --- */
+
+  /* grade de estrutura (.feat) */
+  .feat{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+  .feat .f{ background:var(--white); border:1px solid var(--gray-100); border-radius:14px; padding:14px; box-shadow:0 6px 18px rgba(11,22,51,.06); }
+  .feat .f .icon-badge{ width:36px; height:36px; border-radius:10px; margin-bottom:9px; }
+  .feat .f .icon-badge svg.icon{ width:19px; height:19px; }
+  .feat .f b{ display:block; font-size:13px; font-weight:800; line-height:1.25; }
+  .feat .f span{ display:block; font-size:11.5px; color:var(--gray-600); line-height:1.4; margin-top:4px; }
+
+  /* plataformas de delivery */
+  .plats{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+  .plat{ background:var(--white); border:1px solid var(--gray-100); border-radius:14px; padding:16px 12px; text-align:center; box-shadow:0 6px 18px rgba(11,22,51,.06); }
+  .plat .icon-badge{ width:38px; height:38px; border-radius:11px; margin:0 auto 9px; }
+  .plat b{ display:block; font-size:14.5px; font-weight:800; }
+  .plat span{ display:block; font-size:11px; color:var(--gray-600); margin-top:4px; line-height:1.35; }
+
+  /* etapas do trabalho */
+  .steps{ margin-top:18px; display:flex; flex-direction:column; gap:14px; }
+  .step{ display:flex; gap:13px; align-items:flex-start; }
+  .step .sn{ width:30px; height:30px; flex:none; border-radius:50%; background:linear-gradient(135deg,var(--blue-500),var(--blue-400)); color:#fff; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; }
+  .step:nth-child(even) .sn{ background:linear-gradient(135deg,var(--orange-500),var(--orange-400)); }
+  .step b{ display:block; font-size:14px; font-weight:800; }
+  .step p{ font-size:12.5px; color:var(--gray-600); line-height:1.45; margin-top:3px; }
+
+  /* caso de crescimento */
+  .case{ margin-top:18px; background:var(--white); border:1px solid var(--gray-100); border-radius:16px; padding:18px; box-shadow:0 8px 22px rgba(11,22,51,.07); }
+  .case-top{ display:flex; align-items:center; gap:11px; }
+  .case-top img{ width:46px; height:46px; border-radius:50%; object-fit:cover; background:var(--gray-100); flex:none; }
+  .case-top b{ display:block; font-size:15px; font-weight:800; }
+  .case-top span{ display:block; font-size:11.5px; color:var(--gray-600); margin-top:2px; }
+  .case-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .case-m{ border:1px solid var(--gray-100); border-radius:12px; padding:12px; text-align:center; background:var(--gray-050); }
+  .case-m .lbl{ font-size:9.5px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:var(--gray-600); }
+  .case-m .k{ font-size:23px; font-weight:800; line-height:1.1; margin-top:5px; }
+  .case-m.now{ background:rgba(30,167,255,.07); border-color:rgba(30,167,255,.3); }
+  .case-m.now .lbl{ color:var(--blue-500); }
+  .case-m.now .k{ color:var(--blue-500); }
+  .case ul{ list-style:none; margin-top:16px; }
+  .case li{ position:relative; padding-left:19px; font-size:12.5px; line-height:1.5; color:var(--gray-600); margin-bottom:8px; }
+  .case li::before{ content:"✓"; position:absolute; left:0; color:var(--orange-500); font-weight:800; }
+  .case li b{ color:var(--dark-text); }
+
+  /* logos dos aplicativos */
+  .plat img{ width:56px; height:56px; border-radius:13px; margin:0 auto 9px; object-fit:contain; background:var(--gray-050); display:block; }
+
+  /* grafico do caso */
+  .chart{ margin-top:18px; }
+  .chart .hero{ font-size:38px; font-weight:800; line-height:1; color:var(--blue-500); }
+  .chart .hero-sub{ font-size:12.5px; color:var(--gray-600); line-height:1.45; margin-top:6px; }
+  .plot{ margin-top:20px; display:flex; align-items:flex-end; justify-content:center; gap:34px; height:168px; border-bottom:1px solid var(--gray-100); padding:0 6px; }
+  .bar-wrap{ display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .bar-val{ font-size:13px; font-weight:800; color:var(--dark-text); margin-bottom:7px; }
+  .bar{ width:52px; border-radius:4px 4px 0 0; }
+  .bar.base{ background:#62bdf2; }
+  .bar.now{ background:var(--blue-500); }
+  .plot-x{ display:flex; justify-content:center; gap:34px; padding:9px 6px 0; }
+  .plot-x span{ width:52px; text-align:center; font-size:10.5px; color:var(--gray-600); line-height:1.3; }
+  .chart-cap{ font-size:11px; color:var(--gray-600); margin-top:12px; line-height:1.45; }
+
+  /* historia do caso */
+  .story p{ font-size:13px; line-height:1.6; color:var(--gray-600); margin-top:11px; }
+  .story p b{ color:var(--dark-text); }
+
+  /* link para a pagina de avulsos */
+  .alt-link{ display:block; margin-top:16px; text-align:center; font-size:12.5px; color:var(--blue-400); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+<defs>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 9v10h14V9"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-4-1L3 20l1.3-3.9a8.4 8.4 0 1 1 16.7-4.6z"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="14" r="3.5"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v3a1 1 0 0 0 1 1h2l3 5V6l-3 5H4a1 1 0 0 0-1 1z"/><path d="M12 9l7-5v18l-7-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2 7 12 14 22 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="19" x2="14" y2="19"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h13l-3 4 3 4H5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l-1 14H6z"/><path d="M9 7a3 3 0 0 1 6 0"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></symbol>
+</defs>
+</svg>
+
+<!--
+  PROPOSTA ADEGA NOVA DANFER · Humanize
+  Base: modelo-proposta/ · Regras: PADRAO-PROPOSTAS.md
+
+  DADOS REAIS JA APLICADOS (print do perfil, 13/10/2026):
+    @adeganovadanfer · 393 seguidores · 6 publicacoes · 277 seguindo
+    Rua Careiro, 30 - Jd Danfer · WhatsApp da adega (11) 94934-7990
+    Aberto todos os dias · seg a qui 11h-23h · sex 11h-1h
+
+  AINDA PENDENTE:
+    1. foto-adega-nova-danfer.jpg        -> placeholder marcado
+    2. mockup-instagram-adega-nova-danfer.jpg -> placeholder marcado
+    3. mockup-site-adega-nova-danfer.jpg      -> placeholder marcado
+    4. Link da simulacao do site
+    5. Secao "Onde da para chegar": numeros reais da adega do Bruninho
+    6. Horario de sabado e domingo (a bio do Instagram corta em "...mais")
+-->
+
+<div class="wrap">
+
+  <!-- 1 · HERO + DIAGNOSTICO -->
+  <section class="dark">
+    <div class="glow glow-blue" style="width:280px;height:280px; top:-100px; right:-100px;"></div>
+    <div class="glow glow-orange" style="width:220px;height:220px; bottom:-80px; left:-80px; opacity:.22;"></div>
+    <div class="lines"></div>
+    <div class="z">
+      <div class="topbar">
+        <img class="humanize-logo" src="logo-humanize.png" alt="Humanize marketing digital" style="height:38px;">
+        <div class="jk-badge">
+          <img src="logo-adega-nova-danfer.png" alt="Adega Nova Danfer" style="height:44px;width:44px;">
+        </div>
+      </div>
+
+      <span class="pill pill-orange" style="margin-top:20px;">Proposta comercial</span>
+      <h1>Marketing Digital para a <span class="accent">Adega Nova Danfer</span></h1>
+      <div class="divider"></div>
+      <p class="lead">A Humanize é uma agência de marketing digital que ajuda empresas a transformar presença online em vendas, com estratégia, conteúdo humanizado e gestão de tráfego pago.</p>
+
+      <div class="hero-photo">
+        <img src="foto-adega-nova-danfer.jpg" alt="Fachada da Adega Nova Danfer" style="height:360px;object-fit:cover;object-position:center top;">
+        <div class="hero-cap">
+          <svg class="icon" style="width:15px;height:15px;color:var(--blue-400);"><use href="#i-store"/></svg>
+          Adega Nova Danfer · Rua Careiro, 30 · Jd. Danfer, São Paulo · SP
+        </div>
+      </div>
+
+      <span class="eyebrow" style="margin-top:24px; display:block;">Diagnóstico rápido</span>
+      <ul class="bullets">
+        <li>A adega abre <b>todos os dias</b>, vai até <b>2h no sábado</b> e já entrega: o pedido entra pelo WhatsApp (11) 94934-7990. A operação de delivery existe e funciona.</li>
+        <li>No Instagram são <b>393 seguidores para apenas 6 publicações</b>. A audiência já está lá — o que falta é conteúdo que faça ela pedir.</li>
+        <li>Quem abre o <b>iFood, 99Food, Keeta ou Anota Aí</b> procurando bebida não encontra a Adega Nova Danfer. A procura já acontece todo dia; a loja é que não aparece.</li>
+        <li>Objetivo da parceria: <b>colocar a adega nos aplicativos de delivery e transformar os 393 seguidores em pedidos recorrentes</b>, com conteúdo gravado na loja e tráfego pago no bairro.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 · A ADEGA HOJE -->
+  <section class="light">
+    <div class="z">
+      <span class="eyebrow">O que já está pronto</span>
+      <h2>A adega hoje</h2>
+      <div class="divider"></div>
+      <p class="lead">Não falta estrutura. Falta quem veja.</p>
+
+      <div class="feat">
+        <div class="f">
+          <div class="icon-badge"><svg class="icon"><use href="#i-clock"/></svg></div>
+          <b>Aberta todos os dias</b>
+          <span>Seg a qui 11h–23h · Sex 11h–1h · Sáb 11h–2h · Dom 10h–22h.</span>
+        </div>
+        <div class="f">
+          <div class="icon-badge orange"><svg class="icon"><use href="#i-bag"/></svg></div>
+          <b>Delivery próprio</b>
+          <span>Pedido direto no WhatsApp (11) 94934-7990, já divulgado no feed.</span>
+        </div>
+        <div class="f">
+          <div class="icon-badge"><svg class="icon"><use href="#i-pin"/></svg></div>
+          <b>Ponto no Jd. Danfer</b>
+          <span>Rua Careiro, 30 — bairro residencial, público do lado.</span>
+        </div>
+        <div class="f">
+          <div class="icon-badge orange"><svg class="icon"><use href="#i-store"/></svg></div>
+          <b>Grande variedade de produtos</b>
+          <span>Loja com diversas opções de bebidas, marcas e preços.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · SERVICOS -->
+  <section class="white">
+    <div class="z">
+      <span class="eyebrow">Escopo da parceria</span>
+      <h2>Serviços incluídos</h2>
+      <div class="divider"></div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon-badge"><svg class="icon"><use href="#i-bag"/></svg></div>
+          <div><h3>Cadastro nas plataformas de delivery</h3><p>Abrimos e configuramos a loja no iFood, 99Food, Keeta e Anota Aí: cardápio completo, fotos, preços, área de entrega e horários de funcionamento.</p></div>
+        </div>
+        <div class="card">
+          <div class="icon-badge orange"><svg class="icon"><use href="#i-menu"/></svg></div>
+          <div><h3>Gerenciamento das plataformas</h3><p>Acompanhamento do dia a dia: promoções, avaliações dos clientes, itens em falta, destaque na busca e ajuste do cardápio.</p></div>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg class="icon"><use href="#i-chat"/></svg></div>
+          <div><h3>Gerenciamento de redes sociais</h3><p>Planejamento de conteúdo, legendas e publicação no Instagram e no Facebook da adega.</p></div>
+        </div>
+        <div class="card">
+          <div class="icon-badge orange"><svg class="icon"><use href="#i-camera"/></svg></div>
+          <div><h3>Criação de conteúdo na loja</h3><p>Visitas presenciais para gravar a variedade de bebidas, os combos e as marcas da loja, com edição na identidade visual da Adega Nova Danfer.</p></div>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg class="icon"><use href="#i-megaphone"/></svg></div>
+          <div><h3>Gestão de tráfego pago</h3><p>Campanhas no Instagram e no Facebook para alcançar quem pede bebida em casa na região do Jd. Danfer.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · PLATAFORMAS DE DELIVERY -->
+  <section class="light">
+    <div class="z">
+      <span class="eyebrow">Onde a adega vai aparecer</span>
+      <h2>Quatro plataformas de delivery</h2>
+      <div class="divider"></div>
+      <p class="lead">Cadastro, cardápio e gestão em cada uma delas. Quem já está procurando bebida no aplicativo passa a encontrar a Adega Nova Danfer.</p>
+
+      <div class="plats">
+        <div class="plat">
+          <img src="app-ifood.png" alt="iFood">
+          <b>iFood</b>
+          <span>Cadastro, cardápio e gestão</span>
+        </div>
+        <div class="plat">
+          <img src="app-99food.png" alt="99Food">
+          <b>99Food</b>
+          <span>Cadastro, cardápio e gestão</span>
+        </div>
+        <div class="plat">
+          <img src="app-keeta.png" alt="Keeta">
+          <b>Keeta</b>
+          <span>Cadastro, cardápio e gestão</span>
+        </div>
+        <div class="plat">
+          <img src="app-anotaai.png" alt="Anota Aí">
+          <b>Anota Aí</b>
+          <span>Cadastro, cardápio e gestão</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · MATERIAL DE APOIO -->
+  <section class="white">
+    <div class="z">
+      <span class="eyebrow">Material de apoio</span>
+      <h2>Como fica o Instagram e a loja no delivery</h2>
+      <div class="divider"></div>
+
+      <div class="phones">
+        <div>
+          <div class="phone"><div class="notch"></div><img src="mockup-instagram-adega-nova-danfer.jpg" alt="Simulação do Instagram da Adega Nova Danfer"></div>
+          <div class="phone-cap" style="color:var(--gray-600);">Instagram organizado e com identidade visual</div>
+        </div>
+        <div>
+          <div class="phone"><div class="notch"></div><img src="mockup-site-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no delivery"></div>
+          <div class="phone-cap" style="color:var(--gray-600);">Loja no delivery, com cardápio e pedido</div>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top:18px; text-align:center; font-size:13px;">
+        Ver a simulação funcionando:
+        <a href="[[LINK DA SIMULAÇÃO DO SITE]]" target="_blank" rel="noopener" style="color:var(--blue-500); font-weight:800; text-decoration:none;">abrir no navegador</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 6 · COMO FUNCIONA -->
+  <section class="light">
+    <div class="z">
+      <span class="eyebrow">Como funciona</span>
+      <h2>O que acontece depois do aceite</h2>
+      <div class="divider"></div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="sn">1</div>
+          <div>
+            <b>Cadastro nas plataformas</b>
+            <p>Abrimos a loja no iFood, 99Food, Keeta e Anota Aí, com cardápio completo, fotos de cada item, preços, área de entrega e horários.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">2</div>
+          <div>
+            <b>Primeira visita de conteúdo</b>
+            <p>Gravação na adega: a variedade de bebidas, os combos, as marcas e o movimento da loja. Material editado e pronto para publicar.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">3</div>
+          <div>
+            <b>Redes e anúncios no ar</b>
+            <p>Instagram e Facebook organizados, publicando com constância, e campanhas de tráfego pago rodando para o bairro.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sn">4</div>
+          <div>
+            <b>Gestão todo mês</b>
+            <p>Acompanhamento das plataformas e das redes, leitura do que mais vendeu e ajuste das campanhas e das promoções.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · ONDE DA PARA CHEGAR -->
+  <section class="white">
+    <div class="z">
+      <span class="eyebrow">Onde dá para chegar</span>
+      <h2>O caminho que a <span class="accent">Adega do Bruninho</span> já fez</h2>
+      <div class="divider"></div>
+      <p class="lead">Mesma receita que está nesta proposta: Instagram ativo, canais de delivery organizados e tráfego pago.</p>
+
+      <div class="case">
+        <div class="case-top">
+          <img src="logo-adega-do-bruninho.png" alt="Adega do Bruninho">
+          <div>
+            <b>Adega do Bruninho</b>
+            <span>Faturamento no Anota Aí, a plataforma própria da adega</span>
+          </div>
+        </div>
+
+        <div class="chart">
+          <div class="hero">+200%</div>
+          <div class="hero-sub">O faturamento na plataforma própria <b>triplicou em um ano</b>.</div>
+
+          <div class="plot">
+            <div class="bar-wrap">
+              <div class="bar-val">1x</div>
+              <div class="bar base" style="height:48px;"></div>
+            </div>
+            <div class="bar-wrap">
+              <div class="bar-val">3x</div>
+              <div class="bar now" style="height:144px;"></div>
+            </div>
+          </div>
+          <div class="plot-x">
+            <span>Início do trabalho</span>
+            <span>12 meses depois</span>
+          </div>
+
+          <div class="chart-cap">Faturamento relativo no Anota Aí, com o início do trabalho como base. No mesmo período, as lojas no <b>iFood</b> e na <b>99Food</b> também cresceram.</div>
+        </div>
+
+        <div class="story">
+          <p>A adega vivia do balcão. O Instagram existia, mas era um perfil parado: poucas publicações e nenhum pedido vindo dali.</p>
+          <p><b>O trabalho começou pelo Instagram.</b> Conteúdo gravado dentro da loja, com os produtos e as pessoas reais da adega, publicado com constância — não quando sobrava tempo. O perfil deixou de ser cartão de visita e virou porta de entrada: quem descobria a adega ali já descobria querendo pedir.</p>
+          <p>Com a audiência crescendo, abrimos os canais de venda: o cardápio próprio no <b>Anota Aí</b>, com pedido automatizado no WhatsApp para nenhum pedido se perder na conversa, e as lojas no <b>iFood</b> e na <b>99Food</b>.</p>
+          <p>O <b>tráfego pago</b> entrou por último, levando quem via a adega no Instagram direto para o canal de pedido. Em um ano, o faturamento na plataforma própria triplicou.</p>
+        </div>
+
+        <p style="font-size:11.5px; color:var(--gray-600); line-height:1.45; margin-top:14px; font-style:italic;">
+          Resultado de um cliente real, não é promessa de resultado. Cada negócio tem o seu ponto de partida.
+        </p>
+      </div>
+
+      <p class="lead" style="margin-top:16px; font-size:13.5px;">
+        A Adega Nova Danfer começa essa caminhada em vantagem: já tem delivery rodando, uma loja com grande variedade de bebidas e <b>393 pessoas</b> acompanhando.
+      </p>
+    </div>
+  </section>
+
+  <!-- 8 · INVESTIMENTO -->
+  <section class="dark">
+    <div class="glow glow-blue" style="width:260px;height:260px; top:-90px; left:-90px;"></div>
+    <div class="glow glow-orange" style="width:200px;height:200px; bottom:-70px; right:-70px; opacity:.2;"></div>
+    <div class="lines"></div>
+    <div class="z">
+      <span class="eyebrow">Proposta de investimento</span>
+      <h2>Escolha o seu plano</h2>
+      <div class="divider"></div>
+
+      <p class="lead">Dois formatos para a Adega Nova Danfer. O primeiro coloca a adega nos aplicativos. O segundo cuida de tudo: aplicativos, redes, conteúdo e anúncios.</p>
+
+      <div class="plans">
+        <div class="plan">
+          <div class="pn">Plano mensal 1</div>
+          <h3>Delivery nas plataformas</h3>
+          <div class="val">R$ 1.500<small>/mês</small></div>
+          <ul>
+            <li>Cadastro da adega no iFood, 99Food, Keeta e Anota Aí</li>
+            <li>Cardápio montado com fotos, descrições e preços</li>
+            <li>Gerenciamento das quatro plataformas</li>
+            <li>Promoções, avaliações e ajustes de cardápio acompanhados todo mês</li>
+          </ul>
+        </div>
+
+        <div class="plan best">
+          <span class="badge">Recomendado</span>
+          <div class="pn">Plano mensal 2</div>
+          <h3>Delivery + Redes + Conteúdo + Tráfego</h3>
+          <div class="val">R$ 2.500<small>/mês</small></div>
+          <ul>
+            <li>Tudo do Plano 1: cadastro e gerenciamento das quatro plataformas de delivery</li>
+            <li>Cadastro e gerenciamento das redes sociais</li>
+            <li>Criação de conteúdo para o Instagram e para os anúncios</li>
+            <li><b>2 visitas presenciais por mês</b> para colher conteúdo na adega</li>
+            <li>Gestão de tráfego pago</li>
+          </ul>
+          <div class="note">A verba de anúncios é paga à parte, direto às plataformas.</div>
+        </div>
+      </div>
+
+      <a class="alt-link" href="valores-avulsos.html">Prefere contratar serviços separados? Ver valores avulsos →</a>
+
+      <table class="svc" style="margin-top:22px;">
+        <tr><td class="n"><svg class="icon" style="width:16px;height:16px;color:var(--orange-400);"><use href="#i-check"/></svg></td><td>Primeiro pagamento antecipado, no momento da assinatura</td></tr>
+        <tr><td class="n"><svg class="icon" style="width:16px;height:16px;color:var(--blue-400);"><use href="#i-doc"/></svg></td><td>Assinatura digital do contrato pelo Gov.br</td></tr>
+        <tr><td class="n"><svg class="icon" style="width:16px;height:16px;color:var(--orange-400);"><use href="#i-repeat"/></svg></td><td>Renovação automática por 12 meses, caso nenhuma das partes manifeste interesse em encerrar</td></tr>
+        <tr><td class="n"><svg class="icon" style="width:16px;height:16px;color:var(--blue-400);"><use href="#i-megaphone"/></svg></td><td>Verba de anúncios paga à parte, direto às plataformas, definida junto com o cliente</td></tr>
+      </table>
+
+      <div class="cta-box">
+        <div class="cta-title">Vamos começar, João Gabriel?</div>
+        <a class="cta-btn" href="https://wa.me/5511914894352" target="_blank" rel="noopener">
+          <svg class="icon" style="width:18px;height:18px;"><use href="#i-chat"/></svg>
+          Falar no WhatsApp
+        </a>
+        <div class="cta-info">
+          <span><svg class="icon" style="width:14px;height:14px;"><use href="#i-mail"/></svg> humanizemktdigital@gmail.com</span>
+          <span><svg class="icon" style="width:14px;height:14px;"><use href="#i-phone"/></svg> (11) 91489-4352</span>
+          <span><svg class="icon" style="width:14px;height:14px;"><use href="#i-chat"/></svg> @humanizemarketingdigital</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Humanize · Marketing Digital</footer>
+
+  <div class="sticky-cta">
+    <a href="https://wa.me/5511914894352" target="_blank" rel="noopener">
+      <svg class="icon" style="width:17px;height:17px;"><use href="#i-chat"/></svg>
+      Falar com a Humanize agora
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
