@@ -227,20 +227,20 @@
   /* carrossel dos aplicativos dentro do celular
      ---------------------------------------------------------------
      A duracao e as porcentagens dependem de QUANTAS imagens existem,
-     porque cada slide fica 3s no ar. Hoje sao 3 slides (9s de ciclo).
-     Ao entrar a Keeta, serao 4 slides: troque para
-       animation: slide-fade 12s linear infinite;
-       nth-child(1..4) com delay 0s, 3s, 6s, 9s;
-       e no @keyframes: 3% / 25% / 28%.
+     porque cada slide fica 3s no ar. Sao 4 slides: ciclo de 12s.
+     Para acrescentar ou tirar uma tela, mexa em tres lugares:
+     a duracao, os animation-delay e as porcentagens do @keyframes
+     (entrada ~0,36s, saida aos 3s do proprio slide).
      --------------------------------------------------------------- */
   .slides{ position:relative; width:100%; aspect-ratio:9/17; background:#0d1730; overflow:hidden; }
   .slides img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top;
-    opacity:0; animation:slide-fade 9s linear infinite; }
+    opacity:0; animation:slide-fade 12s linear infinite; }
   .slides img:nth-child(1){ animation-delay:0s; }
   .slides img:nth-child(2){ animation-delay:3s; }
   .slides img:nth-child(3){ animation-delay:6s; }
+  .slides img:nth-child(4){ animation-delay:9s; }
   @keyframes slide-fade{
-    0%{opacity:0} 4%{opacity:1} 33%{opacity:1} 37%{opacity:0} 100%{opacity:0}
+    0%{opacity:0} 3%{opacity:1} 25%{opacity:1} 28%{opacity:0} 100%{opacity:0}
   }
   /* sem animacao: quem pediu menos movimento, e o papel, veem a primeira tela */
   @media (prefers-reduced-motion: reduce){
@@ -306,10 +306,7 @@
   em 13/10/2026 que o de pedido e este)
   Horario: seg a qui 11h-23h · sex 11h-1h · sab 11h-2h · dom 10h-22h
 
-  AINDA PENDENTE:
-    - mockup-keeta-adega-nova-danfer.jpg: a quarta tela do carrossel.
-      Ao acrescentar, ver o comentario do bloco .slides no CSS: sao tres
-      numeros a trocar para o ciclo virar 12s.
+  Carrossel do segundo celular, em ordem: iFood, 99Food, Keeta, Anota Ai.
 -->
 
 <div class="wrap">
@@ -466,6 +463,7 @@
             <div class="slides">
               <img src="mockup-ifood-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no iFood">
               <img src="mockup-99food-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no 99Food">
+              <img src="mockup-keeta-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer na Keeta">
               <img src="mockup-anotaai-adega-nova-danfer.jpg" alt="Simulação da loja da Adega Nova Danfer no Anota Aí">
             </div>
           </div>
